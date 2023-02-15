@@ -1,0 +1,10 @@
+.App {
+	display: flex;
+	/* background-color: green; */
+	height: 100vh;
+}
+
+#left_master {
+	background-color: red;
+	width: 70vw;
+}

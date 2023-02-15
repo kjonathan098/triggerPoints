@@ -1,0 +1,39 @@
+#login_master_box {
+	/* background-color: purple; */
+	width: 30vw;
+	display: flex;
+	justify-content: center;
+	color: black;
+	padding: 10px;
+}
+
+.login_cotainer {
+	width: 80%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+h3 {
+	color: purple;
+	font-size: 30px;
+}
+.login_options_containers {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+.register_container {
+	display: flex;
+	gap: 2px;
+	justify-content: center;
+}
+
+.register_button {
+	color: blue;
+	text-decoration: underline;
+}
+
+.register_button:hover {
+	cursor: pointer;
+}
