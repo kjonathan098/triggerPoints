@@ -1,7 +1,6 @@
 import { initializeApp } from 'firebase/app'
-import { getAuth } from 'firebase/auth'
+import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
 import { getFirestore, collection, getDocs } from 'firebase/firestore'
-import { GoogleAuthProvider } from 'firebase/auth'
 
 const firebaseConfig = {
 	apiKey: 'AIzaSyBTmIwVlYBNDYFFACLCjuHeoiyUN9wlDsA',
@@ -16,18 +15,31 @@ const firebaseConfig = {
 // Initialize Firebase
 initializeApp(firebaseConfig)
 
-const provider = new GoogleAuthProvider()
-
-// database
+// init
 
 const db = getFirestore()
+export const auth = getAuth()
 
 //collection
 const colRef = collection(db, 'users')
 
 export const fireBaseAPIHandler = {
+	getCurrentUser: async () => {
+		getAuth().onAuthStateChanged((user) => {
+			return user
+		})
+	},
 	getUsers: async () => {
 		const snapshot = await getDocs(colRef)
 		console.log(snapshot)
+	},
+	signinWithGoogle: async () => {
+		const provider = new GoogleAuthProvider()
+		try {
+			const result = await signInWithPopup(auth, provider)
+			const user = result.user
+		} catch (error) {
+			console.log('error')
+		}
 	},
 }

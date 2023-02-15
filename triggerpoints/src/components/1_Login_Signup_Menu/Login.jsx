@@ -1,23 +1,28 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './Login.css'
 import loginImage from '../../media/login_image.png'
 import { useNavigate } from 'react-router-dom'
+import { userContext } from '../../context/userContext'
 
 import LoginButtons from './LoginButtons'
 
 const Login = () => {
 	const [isNewRegister, setIsNewRegister] = useState(false)
-	const navigate = useNavigate()
+	const { isLoggedIn, setIsLoggedIn } = useContext(userContext)
+
+	// const navigate = useNavigate()
+	console.log('hello')
 
 	const functions = {
 		navigateToApp: () => {
-			navigate('/app')
+			// navigate('/app')
 		},
 		loginSwitcher: () => {
-			setIsNewRegister(true)
+			// setIsNewRegister(true)
 		},
 	}
 
+	if (isLoggedIn) return <div>User Logged In</div>
 	return (
 		<div className="App">
 			<div id="left_master">

@@ -5,7 +5,7 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	/* background-color: #282c34; */
-	color: white;
+	color: black;
 }
 :root {
 	--fb-blue: #3b5998;

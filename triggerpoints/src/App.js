@@ -2,12 +2,19 @@ import './App.css'
 import Login from './components/1_Login_Signup_Menu/Login'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Tp3dApp from './components/2_App/Tp3dApp'
-import { fireBaseAPIHandler } from './firebase'
-import { useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import { onAuthStateChanged } from 'firebase/auth'
+import { auth } from './firebase'
+import { userContext } from './context/userContext'
+
 function App() {
-	useEffect(() => {
-		fireBaseAPIHandler.getUsers()
+	const { isLoggedIn, setIsLoggedIn } = useContext(userContext)
+	console.log(isLoggedIn)
+
+	onAuthStateChanged(auth, (user) => {
+		setIsLoggedIn(user)
 	})
+
 	return (
 		<BrowserRouter>
 			<Routes>
